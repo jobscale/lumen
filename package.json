@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "docker build -t lumen:0.0.1 .",
-    "docker": "docker run --name lumen --rm -d -p 80:80 lumen:0.0.1",
+    "start": "docker run --name lumen --rm -d -p 80:80 lumen:0.0.1",
     "stop": "docker stop lumen"
   }
 }
