@@ -8,7 +8,7 @@ COPY . .
 RUN ./composer.phar install && sed -i -e "s/APP_KEY=.*$/APP_KEY=$(php -r "require 'vendor/autoload.php'; echo str_random(32);")/" .env
 
 COPY default /etc/nginx/sites-enabled/default
-COPY www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN rm -fr html && ln -s public html && chown -R www-data. storage resources bootstrap
 
 EXPOSE 80
