@@ -1,6 +1,6 @@
-FROM jobscale/php-fpm
+FROM ghcr.io/jobscale/php-fpm
 COPY . .
-RUN composer install \
- && sed -i -e "s/APP_KEY=.*$/APP_KEY=$(php -r "require 'vendor/autoload.php'; echo str_random(32);")/" .env \
- && rm -fr html && ln -s public html \
- && chown -R www-data. storage resources bootstrap
+RUN composer install
+RUN sed -i -e "s/APP_KEY=.*$/APP_KEY=$(php -r "require 'vendor/autoload.php'; echo str_random(32);")/" .env
+RUN rm -fr html && ln -sfn public html
+RUN chown -R nginx. .
